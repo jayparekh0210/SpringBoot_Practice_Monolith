@@ -31,3 +31,51 @@ build/
 
 ### VS Code ###
 .vscode/
+settings.json
+
+### Eclipse ###
+.git/
+.gitignore
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+### Logs ###
+*.log
+logs/
+*.log.*
+
+### Local environment ###
+.env
+.env.local
+.env.*.local
+
+### Database ###
+*.db
+*.sqlite
+*.sqlite3
+
+### OS ###
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+### Editor files ###
+*.swp
+*.swo
+*~
+
+### Maven ###
+dependency-reduced-pom.xml
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+.flattened-pom.xml
+
