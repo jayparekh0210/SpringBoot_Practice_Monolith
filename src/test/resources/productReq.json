@@ -1,0 +1,29 @@
+[
+  {
+    "name": "Logitech MX Master 3",
+    "description": "Advanced wireless mouse with multi-device connectivity",
+    "price": 99.99,
+    "category": "Accessories",
+    "imageUrl": "https://example.com/images/logitech-mx-master.jpg",
+    "stockQuantity": 150,
+    "isActive": null
+  },
+  {
+    "name": "Dell XPS 13",
+    "description": "Ultrabook with 13-inch FHD display, Intel i7, 16GB RAM, 512GB SSD",
+    "price": 1299.99,
+    "category": "Electronics",
+    "imageUrl": "https://example.com/images/dell-xps-13.jpg",
+    "stockQuantity": 25,
+    "isActive": true
+  },
+  {
+    "name": "Anker USB-C Cable 6ft",
+    "description": "Fast charging and data transfer cable, supports up to 100W",
+    "price": 12.99,
+    "category": "Accessories",
+    "imageUrl": "https://example.com/images/anker-usb-c-cable.jpg",
+    "stockQuantity": 500,
+    "isActive": true
+  }
+]

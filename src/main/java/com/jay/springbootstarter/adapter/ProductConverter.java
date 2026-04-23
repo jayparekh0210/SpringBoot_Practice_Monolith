@@ -35,6 +35,7 @@ public class ProductConverter {
 
     public Product productRequestToProductModel(ProductRequest productRequest,Product product) {
         return Product.builder()
+                .id(product.getId())
                 .name(productRequest.getName()!=null ? productRequest.getName() : product.getName())
                 .description(productRequest.getDescription()!=null ? productRequest.getDescription() : product.getDescription())
                 .price(productRequest.getPrice()!=null ? productRequest.getPrice() : product.getPrice())

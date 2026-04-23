@@ -7,7 +7,6 @@ import com.jay.springbootstarter.models.Product;
 import com.jay.springbootstarter.repositories.ProductRepository;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,20 +33,32 @@ public class ProductService {
     }
 
     public List<ProductResponse> getAllProducts(){
-        return productRepository.findAll()
+        return productRepository.findAllByIsActiveTrue()
                 .stream()
                 .map(productConverter::productModelToProductResponse)
                 .toList();
     }
 
     public ProductResponse updateProduct(Long id, ProductRequest productRequest) {
-        Product product = productRepository.findById(id).orElse(null);
-        if(product != null){
-            Product updatedProduct = productConverter.productRequestToProductModel(productRequest, product);
-            return productConverter.productModelToProductResponse(productRepository.save(updatedProduct));
-        } else {
-            return null;
-        }
+        return productRepository.findById(id)
+                .map(existingProduct -> {
+                    Product updatedProduct = productConverter.productRequestToProductModel(productRequest, existingProduct);
+                    return productConverter.productModelToProductResponse(productRepository.save(updatedProduct));
+                })
+                .orElse(null);
+    }
 
+    public boolean deleteProduct(Long id){
+        return productRepository.findById(id).map(product -> {
+            product.setIsActive(false);
+            productRepository.save(product);
+            return true;
+        }).orElse(false);
+    }
+
+    public List<ProductResponse> searchProducts(String keyword){
+        return productRepository.searchProduct(keyword)
+                .stream()
+                .map(productConverter::productModelToProductResponse).toList();
     }
 }
