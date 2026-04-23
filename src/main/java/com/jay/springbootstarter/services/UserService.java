@@ -29,7 +29,7 @@ public class UserService {
     }
 
     public CreateUserResponse addUser(CreateUserRequest userRequest) {
-        return userConverter.userModelToUserResponse(userConverter.userRequestToUserModel(userRequest));
+        return userConverter.userModelToUserResponse(userRepository.save(userConverter.userRequestToUserModel(userRequest)));
     }
 
     public Optional<CreateUserResponse> fetchUser(Long id) {

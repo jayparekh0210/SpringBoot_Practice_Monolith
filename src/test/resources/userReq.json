@@ -1,0 +1,41 @@
+[
+  {
+    "fName": "John",
+    "lName": "Doe",
+    "email": "john.doe@example.com",
+    "phoneNumber": "+1-555-123-4567",
+    "role": "ADMIN",
+    "address": {
+      "street": "123 Main Street",
+      "state": "California",
+      "country": "United States",
+      "zipcode": "90210"
+    }
+  },
+  {
+    "fName": "Sarah",
+    "lName": "Johnson",
+    "email": "sarah.johnson@example.com",
+    "phoneNumber": "+1-555-234-5678",
+    "role": "CUSTOMER",
+    "address": {
+      "street": "456 Oak Avenue",
+      "state": "New York",
+      "country": "United States",
+      "zipcode": "10001"
+    }
+  },
+  {
+    "fName": "Michael",
+    "lName": "Chen",
+    "email": "michael.chen@example.com",
+    "phoneNumber": "+1-555-345-6789",
+    "role": null,
+    "address": {
+      "street": "789 Pine Road",
+      "state": "Texas",
+      "country": "United States",
+      "zipcode": "75001"
+    }
+  }
+]
