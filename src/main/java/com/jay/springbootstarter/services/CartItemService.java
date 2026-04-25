@@ -2,6 +2,7 @@ package com.jay.springbootstarter.services;
 
 import com.jay.springbootstarter.adapter.CartItemConverter;
 import com.jay.springbootstarter.dto.requests.CartRequest;
+import com.jay.springbootstarter.dto.responses.CartResponse;
 import com.jay.springbootstarter.models.CartItem;
 import com.jay.springbootstarter.models.Product;
 import com.jay.springbootstarter.models.User;
@@ -14,9 +15,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 @Data
 public class CartItemService {
     private final CartItemRepository cartItemRepository;
@@ -75,6 +76,15 @@ public class CartItemService {
             }
         }
         return false;
+    }
+
+    public List<CartResponse> getCartItems(String userid){
+        return userRepository.findById(Long.parseLong(userid))
+                .map(user -> cartItemRepository.findCartItemsByUser(user)
+                        .stream()
+                        .map(cartItemConverter::cartItemModelToCartResponse)
+                        .toList())
+                .orElse(null);
     }
 
     private void decreaseQuantityFromCart(CartItem cartItem, Product product) {

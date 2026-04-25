@@ -1,6 +1,7 @@
 package com.jay.springbootstarter.adapter;
 
 import com.jay.springbootstarter.dto.requests.CartRequest;
+import com.jay.springbootstarter.dto.responses.CartResponse;
 import com.jay.springbootstarter.models.CartItem;
 import com.jay.springbootstarter.models.Product;
 import com.jay.springbootstarter.models.User;
@@ -39,6 +40,15 @@ public class CartItemConverter {
                 .user(user)
                 .quantity(cartRequest.getQuantity())
                 .price(product.getPrice().multiply(BigDecimal.valueOf(cartRequest.getQuantity())))
+                .build();
+    }
+
+    public CartResponse cartItemModelToCartResponse(CartItem cartItem) {
+        return CartResponse.builder()
+                .product(cartItem.getProduct())
+                .user(cartItem.getUser())
+                .quantity(cartItem.getQuantity())
+                .price(cartItem.getPrice())
                 .build();
     }
 

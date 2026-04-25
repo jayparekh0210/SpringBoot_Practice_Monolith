@@ -1,12 +1,15 @@
 package com.jay.springbootstarter.controllers;
 
 import com.jay.springbootstarter.dto.requests.CartRequest;
+import com.jay.springbootstarter.dto.responses.CartResponse;
 import com.jay.springbootstarter.services.CartItemService;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/cart")
@@ -48,5 +51,14 @@ public class CartController {
         }
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Product not found in cart or user not found");
 
+    }
+
+    @GetMapping("/getCartItems")
+    public ResponseEntity<List<CartResponse>> getCartItems(@RequestHeader("X-User-Id") String userId){
+        List<CartResponse> cartItems = cartItemService.getCartItems(userId);
+        if(cartItems != null){
+            return ResponseEntity.status(HttpStatus.OK).body(cartItems);
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
     }
 }
